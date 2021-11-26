@@ -22,7 +22,8 @@ n = 20_000_000
 n.times { track_ip.request_handled(sample_ips.sample) }
 p track_ip.top100 
 
-# Benchmark.bm do |x|
-#   x.report("request_handled") { n.times { track_ip.request_handled(sample_ips.sample) } }
-#   x.report("top100")  { track_ip.top100 }
-# end
+p "The execution time:"
+Benchmark.bm do |x|
+  x.report("request_handled") { n.times { track_ip.request_handled(sample_ips.sample) } }
+  x.report("top100")  { track_ip.top100 }
+end
